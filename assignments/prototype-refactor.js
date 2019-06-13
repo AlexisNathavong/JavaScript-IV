@@ -13,11 +13,11 @@ class GameObject {
     this.name = attributes.name;
     this.createdAt = attributes.createdAt;
     this.dimensions = attributes.dimensions;
-  }
+    }
   
-destroy() {
-return `${this.name} was removed from the game.`;
-  }
+    destroy() {
+        return `${this.name} was removed from the game.`;
+    }
 } 
   
   /*
@@ -26,13 +26,13 @@ return `${this.name} was removed from the game.`;
     * takeDamage() // prototype method -> returns the string '<object name> took damage.'
     * should inherit destroy() from GameObject's prototype
   */
-  class CharacterStats extends GameObject {
-    constructor(CharacterStatsattributes) {
-        super(CharacterStatsattributes);
-    this.healthPoints = attributes.healthPoints;
+class CharacterStats extends GameObject {
+    constructor(characterStatsAttributes) {
+    super(characterStatsAttributes);
+    this.healthPoints = characterStatsAttributes.healthPoints;
     }
   //Method
-  takeDamage() {
+    takeDamage() {
       return `${this.name} took damage.`;
     }
 }
@@ -47,19 +47,18 @@ return `${this.name} was removed from the game.`;
   */
   
   
-  class Humanoid(attributes) {
-    CharacterStats.call(this, attributes)
-    this.team = attributes.team;
-    this.weapons = attributes.weapons;
-    this.language = attributes.language;
+class Humanoid extends CharacterStats {
+    constructor(humanoidAttributes) {
+    super(humanoidAttributes);
+    this.team = humanoidAttributes.team;
+    this.weapons = humanoidAttributes.weapons;
+    this.language = humanoidAttributes.language;
   }
-  
-  Humanoid.prototype = Object.create(CharacterStats.prototype);
-  
-  Humanoid.prototype.greet = function() {
+  //Method
+  greet() {
     return `${this.name} offeres a greeting in ${this.language}`;
   }
-   
+}
   /*
     * Inheritance chain: GameObject -> CharacterStats -> Humanoid
     * Instances of Humanoid should have all of the same properties as CharacterStats and GameObject.
