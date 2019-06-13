@@ -26,16 +26,16 @@ return `${this.name} was removed from the game.`;
     * takeDamage() // prototype method -> returns the string '<object name> took damage.'
     * should inherit destroy() from GameObject's prototype
   */
-  class CharacterStats(attributes) {
-    GameObject.call(this,attributes)
+  class CharacterStats extends GameObject {
+    constructor(CharacterStatsattributes) {
+        super(CharacterStatsattributes);
     this.healthPoints = attributes.healthPoints;
-  }
-  
-  CharacterStats.prototype = Object.create(GameObject.prototype);
-  
-  CharacterStats.prototype.takeDamage = function() {
-    return `${this.name} took damage.`;
-  }
+    }
+  //Method
+  takeDamage() {
+      return `${this.name} took damage.`;
+    }
+}
   /*
     === Humanoid (Having an appearance or character resembling that of a human.) ===
     * team
@@ -47,7 +47,7 @@ return `${this.name} was removed from the game.`;
   */
   
   
-  function Humanoid(attributes) {
+  class Humanoid(attributes) {
     CharacterStats.call(this, attributes)
     this.team = attributes.team;
     this.weapons = attributes.weapons;
