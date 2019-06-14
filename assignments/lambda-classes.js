@@ -50,6 +50,22 @@ class Student extends Person {
     }
 }
 
+class ProjectManagers extends Instructor{
+    constructor(pmAttributes) {
+    super(pmAttributes);
+    this.gradClassName = pmAttributes.gradClassName;
+    this.favInstructor = pmAttributes.favInstructor;
+    }
+    //Method
+    standUp(channel) {
+        return `${this.name} announces to ${channel} @channel standy times!`;
+    }
+
+    debugsCode(subject,student) {
+        return `${this.name} debugs ${student.name}'s code on ${subject}`;
+    }
+}
+
 //Objects
 const fred = new Person({
     name: `Fred`,
@@ -75,49 +91,25 @@ const dan = new Instructor({
     className: 'Web21',
     favSubjects: ['Html', 'CSS', 'JavaScript'],
 });
+
+const marguel = new ProjectManagers({
+    name: 'Marguel',
+    age: 'Maybe 26',
+    gradClassName: 'WEBPT2',
+    favInstructor: 'Me?',
+    location: 'California',
+    specialty: 'React',
+    favLanguage: 'JavaScript, Python, Elm etc.',
+    catchPhrase: "Practice Flex Zombies !!!",
+});
+
 console.log(isaiah.listsSubject());
 console.log(isaiah.PRAssignment('HTML'));
 console.log(isaiah.sprintChallenge(`CSS`));
 console.log(dan.demo(`HTML`));
 console.log(dan.grade(isaiah, `HTML`));
-
-
-//     const kevin = new Student({
-//     name: "Kevin",
-//     age: 28,
-//     location: "California",
-//     previousBackground: "Table Games Dealer",
-//     className: "WEB21",
-//     favSubjects: ['Html', 'CSS', 'JavaScript'],
-// });
-//     const nisa = new Student({
-//     name: 'Nisa',
-//     age: 25,
-//     location: 'Ohio',
-//     previousBackground: 'Debt Collector',
-//     className: 'Web21',
-//     favSubjects: ['Html', 'CSS', 'JavaScript'],
-// });
-
-//     const joscelyn = new Student({
-//     name: "Joscelyn",
-//     age: 29,
-//     location: "California",
-//     previousBackground: "English teacher",
-//     className: 'Web21',
-//     favSubjects: ["Computer Science", "Philosophy", "English"],
-// });
-
-//   const marguel = new ProjectManager({
-//     name: 'Marguel',
-//     age: 'Maybe 26',
-//     gradClassName: 'WEBPT2',
-//     favInstructor: 'Me?',
-//     location: 'California',
-//     specialty: 'React',
-//     favLanguage: 'JavaScript, Python, Elm etc.',
-//     catchPhrase: "Practice Flex Zombies !!!",
-// });
+console.log(marguel.standUp(`#web21_help`));
+console.log(marguel.debugsCode(isaiah,`HTML`));
 
 //   const brandon = new ProjectManager({
 //     name: 'Brandon',
