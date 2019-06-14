@@ -24,11 +24,31 @@ class Instructor extends Person {
         return `Today we are learning about ${subject}`;
     }
 
-    grade(student) {
-        return `${student} receives a perfect score on ${subject}`;
+    grade(student,subject) {
+        return `${student.name} receives a perfect score on ${subject}`;
     }
 }
 
+class Student extends Person {
+    constructor(studAttributes) {
+    super(studAttributes);
+    this.previousBackground = studAttributes.previousBackground;
+    this.className = studAttributes.className;
+    this.favSubjects = studAttributes.favSubjects;
+    }
+    //Method
+    listsSubject() {
+        return `${this.name}'s favorite subjects are: ${this.favSubjects}`;
+    }
+
+    PRAssignment(subject) {
+        return `${this.name} has submitted a PR for ${subject}`;
+    }
+
+    sprintChallenge(subject) {
+        return `${this.name} has begun sprint challenge on ${subject}`;
+    }
+}
 
 //Objects
 const fred = new Person({
@@ -37,23 +57,31 @@ const fred = new Person({
     age: 35,
 });
 console.log(fred.speak());
-// const dan = new Instructor({
-//     name: 'Dan',
-//     age: 'Infinity',
-//     location: 'Denver',
-//     specialty: 'Relentless Debugger',
-//     favLanguage: 'JavaScript, Python, Elm, ReasonML, SmallTalk, Haskell, C#, Java, Rust, Go, Ruby, Crystal, Elixir, Lua, and Julia',
-//     catchPhrase: 'If you can do the thing, you can get paid to do the thing!',
-// });
 
-//   const isaiah = new Student({
-//     name: 'Isaiah',
-//     age: 18,
-//     location: 'Florida',
-//     previousBackground: 'High School last month',
-//     className: 'Web21',
-//     favSubjects: ['Html', 'CSS', 'JavaScript'],
-// });
+const dan = new Instructor({
+    name: 'Dan',
+    age: 'Infinity',
+    location: 'Denver',
+    specialty: 'Relentless Debugger',
+    favLanguage: 'JavaScript, Python, Elm, ReasonML, SmallTalk, Haskell, C#, Java, Rust, Go, Ruby, Crystal, Elixir, Lua, and Julia',
+    catchPhrase: 'If you can do the thing, you can get paid to do the thing!',
+});
+
+  const isaiah = new Student({
+    name: 'Isaiah',
+    age: 18,
+    location: 'Florida',
+    previousBackground: 'High School last month',
+    className: 'Web21',
+    favSubjects: ['Html', 'CSS', 'JavaScript'],
+});
+console.log(isaiah.listsSubject());
+console.log(isaiah.PRAssignment('HTML'));
+console.log(isaiah.sprintChallenge(`CSS`));
+console.log(dan.demo(`HTML`));
+console.log(dan.grade(isaiah, `HTML`));
+
+
 //     const kevin = new Student({
 //     name: "Kevin",
 //     age: 28,
